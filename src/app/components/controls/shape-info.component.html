@@ -1,0 +1,34 @@
+<div>
+  <form *ngIf="formResetToggle" [attr.autocomplete]="isGeneralEditor ? 'NaN' : null" name="shapeInfoForm" #f="ngForm" novalidate
+        >
+    
+
+    <div class="row">
+      <div class="col-lg-12">
+        <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+      </div>
+    </div>
+    <text-box isViewOnly="isViewOnly" isEditMode="isEditMode"></text-box>
+    <div class="row">
+      <div class="col-lg-12">
+        <hr [class.separator-hr]="!isEditMode" [class.edit-separator-hr]="isEditMode" />
+      </div>
+    </div>
+    <div *ngIf="!isViewOnly" class="form-group row">
+      <div class="col-sm-5">
+
+      </div>
+      <div class="col-sm-7">
+        <div ngPreserveWhitespaces class="float-right">
+          <button *ngIf="!isEditMode && isGeneralEditor" type="button" (click)="close()" class="btn btn-outline-secondary"><i class='fa fa-close'></i> {{'shape.editor.Close' | translate}}</button>
+          <button *ngIf="!isEditMode && !isGeneralEditor" type="button" (click)="edit()" class="btn btn-outline-secondary"><i class='fa fa-edit'></i> {{'shape.editor.Edit' | translate}}</button>
+          <button *ngIf="isEditMode" type="button" (click)="cancel()" class="btn btn-danger" [disabled]="isSaving"><i class='fa fa-times'></i> {{'shape.editor.Cancel' | translate}}</button>
+          <button *ngIf="isEditMode" type="submit" class="btn btn-primary" [disabled]="isSaving">
+            <i *ngIf="!isSaving" class='fa fa-save'></i><i *ngIf="isSaving" class='fa fa-circle-o-notch fa-spin'></i> {{isSaving ? ('shape.editor.Saving' | translate) : ('shape.editor.Save' | translate)}}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+</div>

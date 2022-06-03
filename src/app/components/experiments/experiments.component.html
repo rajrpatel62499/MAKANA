@@ -1,0 +1,28 @@
+<div class="container-fluid">
+
+  <header class="pageHeader">
+    <h3><i class="fa fa-truck fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.Experiments' | translate}}</h3>
+  </header>
+  <div class="d-flex">
+    <div [@fadeInOut] class="p-2 w-100">
+      <div #diagram></div>
+    </div>
+  </div>
+</div>
+  <!--model start -->
+  <div class="modal fade" bsModal #shapePropertiesModal="bs-modal" (onHidden)="onShapePropertiesEditorModalHidden()" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 *ngIf="!editingShapeName" class="modal-title float-left"><i class="fa fa-user-plus"></i> {{'shape.management.NewShape' | translate}}</h4>
+          <h4 *ngIf="editingShapeName" class="modal-title float-left"><i class="fa fa-user-circle-o"></i> {{'shape.management.EditShape' | translate:editingShapeName}}</h4>
+          <button type="button" class="close pull-right" title="Close" (click)="shapePropertiesModal.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <shape-info #shapePropertiesEditor [isGeneralEditor]="true"></shape-info>
+        </div>
+      </div>
+    </div>
+  </div>

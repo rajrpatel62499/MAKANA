@@ -1,0 +1,9 @@
+<div class="form-group row has-feedback-icon">
+  <label [class.col-lg-3]="isViewOnly" [class.col-lg-2]="!isViewOnly" class="col-form-label" for="name-{{uniqueId}}">View</label>
+  <div *ngIf="!isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+    <p class="form-control-plaintext">TestView</p>
+  </div>
+  <div *ngIf="isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+    <p class="form-control-plaintext">TestView1</p>
+  </div>
+</div>
